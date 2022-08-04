@@ -1,31 +1,25 @@
 class LinkedList
-    def initialize
-        
+    
+    attr_accessor :size, :head, :tail
+    
+    def initialize(head = nil, tail = nil)
+        @tail = Node.new(tail)
+        @head = Node.new(head, @tail)
+        @size = 2
     end
 
     #append(value) adds a new node containing value to the end of the list
     def append(value)
-        
+        new_node = Node.new(value)
+        @tail.pointer = new_node
+        @tail = new_node
+        @size += 1
     end
 
     #prepend(value) adds a new node containing value to the start of the list
     def prepend(value)
         
-    end
-
-    #size returns the total number of nodes in the list
-    def size
-        
-    end
-
-    #head returns the first node in the list
-    def head
-        
-    end
-
-    #tail returns the last node in the list
-    def tail
-        
+        @size += 1
     end
 
     #at(index) returns the node at the given index
@@ -36,6 +30,7 @@ class LinkedList
     #pop removes the last element from the list
     def pop
         
+        @size -= 1
     end
 
     #contains?(value) returns true if the passed in value is in the list and otherwise returns false.
@@ -57,10 +52,14 @@ end
 
 class Node
     
-    attr_accessor :value
+    attr_accessor :value, :pointer
     
-    def initialize
-        @value = nil
-        @pointer = nil
+    private
+
+    def initialize(value = nil, pointer = nil)
+        @value = value
+        @pointer = pointer
     end
 end
+
+test = LinkedList.new("head", "first_tail")
