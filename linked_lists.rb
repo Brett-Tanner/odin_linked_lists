@@ -8,7 +8,6 @@ class LinkedList
         @size = 2
     end
 
-    #append(value) adds a new node containing value to the end of the list
     def append(value)
         new_node = Node.new(value)
         @tail.pointer = new_node
@@ -16,9 +15,9 @@ class LinkedList
         @size += 1
     end
 
-    #prepend(value) adds a new node containing value to the start of the list
     def prepend(value)
-        
+        new_node = Node.new(value, @head)
+        @head = new_node
         @size += 1
     end
 
@@ -62,4 +61,9 @@ class Node
     end
 end
 
-test = LinkedList.new("head", "first_tail")
+test = LinkedList.new("first_head", "first_tail")
+
+test.append("new_last")
+test.prepend("new_head")
+
+p test
