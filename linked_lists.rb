@@ -1,3 +1,5 @@
+# TODO: could have just set default value as @head and called .method(node.pointer) recursively to move through the list. More readable than reduce.
+
 class LinkedList
     
     attr_accessor :size, :head, :tail
