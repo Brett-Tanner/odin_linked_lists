@@ -40,12 +40,17 @@ class LinkedList
             return true if node.value == value
             node.pointer
         end
-        return false
+        false
     end
 
-    #find(value) returns the index of the node containing value, or nil if not found.
     def find(value)
-        
+        index = 0
+        size.times.reduce(@head) do |node|
+            index += 1
+            return index if node.value == value
+            node.pointer
+        end
+        nil
     end
 
     #to_s represent your LinkedList objects as strings, so you can print them out and preview them in the console. The format should be: ( value ) -> ( value ) -> ( value ) -> nil
