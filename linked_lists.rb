@@ -21,15 +21,16 @@ class LinkedList
         @size += 1
     end
 
-    # 0 indexed
     def at(index)
-        return @head if index == 0
+        return @head if index == 1
+        # to make it not 0-indexed
+        index -= 1
         index.times.reduce(@head) {|node| node.pointer}
     end
 
     def pop
         # because 0 indexed and we want 2nd last
-        @tail = self.at(@size - 2)
+        @tail = self.at(@size - 1)
         @tail.pointer = nil
         @size -= 1
     end
