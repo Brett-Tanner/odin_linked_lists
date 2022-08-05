@@ -62,6 +62,18 @@ class LinkedList
         string << "nil"
         puts "#{string}"
     end
+
+    def insert_at(value, index)
+        return self.prepend(value) if index == 1
+        return self.append(value) if index == @size + 1
+        preceding_node = self.at(index - 1)
+        old_node = self.at(index)
+        preceding_node.pointer = Node.new(value, old_node)
+    end
+
+    def remove_at(index)
+        
+    end
 end
 
 class Node
@@ -75,3 +87,12 @@ class Node
         @pointer = pointer
     end
 end
+
+test = LinkedList.new("original_head", "original_tail")
+
+test.append("filler1")
+test.append("filler2")
+
+p test
+test.remove_at(4)
+p test
