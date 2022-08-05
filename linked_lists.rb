@@ -27,9 +27,10 @@ class LinkedList
         index.times.reduce(@head) {|node| node.pointer}
     end
 
-    #pop removes the last element from the list
     def pop
-        
+        # because 0 indexed and we want 2nd last
+        @tail = self.at(@size - 2)
+        @tail.pointer = nil
         @size -= 1
     end
 
@@ -49,7 +50,6 @@ class LinkedList
     end
 end
 
-
 class Node
     
     attr_accessor :value, :pointer
@@ -66,9 +66,3 @@ test = LinkedList.new("first_head", "first_tail")
 
 test.append("new_tail")
 test.prepend("new_head")
-
-p test.at(0)
-p test.at(1)
-p test.at(2)
-p test.at(3)
-p test.at(4)
