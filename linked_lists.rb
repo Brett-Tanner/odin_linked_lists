@@ -29,15 +29,18 @@ class LinkedList
     end
 
     def pop
-        # because 0 indexed and we want 2nd last
+        # because we want 2nd last
         @tail = self.at(@size - 1)
         @tail.pointer = nil
         @size -= 1
     end
 
-    #contains?(value) returns true if the passed in value is in the list and otherwise returns false.
     def contains?(value)
-        
+        size.times.reduce(@head) do |node|
+            return true if node.value == value
+            node.pointer
+        end
+        return false
     end
 
     #find(value) returns the index of the node containing value, or nil if not found.
