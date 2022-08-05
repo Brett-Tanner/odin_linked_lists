@@ -53,9 +53,14 @@ class LinkedList
         nil
     end
 
-    #to_s represent your LinkedList objects as strings, so you can print them out and preview them in the console. The format should be: ( value ) -> ( value ) -> ( value ) -> nil
     def to_s
-        
+        string = ""
+        size.times.reduce(@head) do |node|
+            string << "( #{node.value} ) -> "
+            node.pointer
+        end
+        string << "nil"
+        puts "#{string}"
     end
 end
 
@@ -70,8 +75,3 @@ class Node
         @pointer = pointer
     end
 end
-
-test = LinkedList.new("first_head", "first_tail")
-
-test.append("new_tail")
-test.prepend("new_head")
