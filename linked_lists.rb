@@ -21,9 +21,10 @@ class LinkedList
         @size += 1
     end
 
-    #at(index) returns the node at the given index
+    # 0 indexed
     def at(index)
-        
+        return @head if index == 0
+        index.times.reduce(@head) {|node| node.pointer}
     end
 
     #pop removes the last element from the list
@@ -63,7 +64,11 @@ end
 
 test = LinkedList.new("first_head", "first_tail")
 
-test.append("new_last")
+test.append("new_tail")
 test.prepend("new_head")
 
-p test
+p test.at(0)
+p test.at(1)
+p test.at(2)
+p test.at(3)
+p test.at(4)
