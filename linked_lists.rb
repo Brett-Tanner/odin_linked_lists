@@ -72,7 +72,12 @@ class LinkedList
     end
 
     def remove_at(index)
-        
+        preceding_node = self.at(index - 1)
+        @tail = preceding_node if index == @size
+        next_node = self.at(index + 1)
+        @head = next_node if index == 1
+        preceding_node.pointer = next_node
+        @size -= 1
     end
 end
 
@@ -87,12 +92,3 @@ class Node
         @pointer = pointer
     end
 end
-
-test = LinkedList.new("original_head", "original_tail")
-
-test.append("filler1")
-test.append("filler2")
-
-p test
-test.remove_at(4)
-p test
